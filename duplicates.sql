@@ -46,4 +46,36 @@ JOIN (
     ON A.primary_key = d.primary_key
 ORDER BY A.primary_key;
 
+-- Purpose:
+--   Safely remove duplicate rows while preserving one canonical record.
+--
+-- How It Works:
+--   - Uses ROW_NUMBER to identify duplicate rows
+--   - Deletes only rows explicitly marked as duplicates
+--
+-- Use When:
+--   - Cleaning staging or intermediate tables
+--   - You have verified ordering logic
+--
+-- Notes:
+--   - Always SELECT first before DELETE
+--   - Test in non-production environments
+
+DELETE FROM Table_A
+WHERE primary_key IN (
+    SELECT primary_key
+    FROM (
+        SELECT
+            primary_key,
+            ROW_NUMBER() OVER (
+                PARTITION BY primary_key
+                ORDER BY created_at
+            ) AS row_num
+        FROM Table_A
+    )
+    WHERE row_num > 1
+);
+
+
+
 
