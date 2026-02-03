@@ -2,7 +2,7 @@
 
 A personal reference repository of **Snowflake-specific SQL queries** for operational visibility, diagnostics, and task scheduling analysis.
 
-This repo exists purely as a **memory aid and speed tool** — a place to quickly grab proven queries when I know *what* I want to do but don’t want to re-derive *how* to do it.
+This repo exists purely as a **memory aid and speed tool** — a place to quickly grab proven queries when I know *what* I want to do but don’t want to re-derive *how* to do it. This repository reflects production-oriented SQL patterns used in real operational and analytics workflows.
 
 ---
 
