@@ -1,8 +1,0 @@
--- Purpose:
---   Identify duplicate rows by primary key.
-SELECT
-    primary_key,
-    COUNT(*) AS cnt
-FROM Table_A
-GROUP BY primary_key
-HAVING COUNT(*) > 1;
